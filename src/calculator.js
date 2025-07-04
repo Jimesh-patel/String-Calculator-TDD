@@ -1,8 +1,10 @@
 class StringCalculator {
     constructor() { }  
 
-    add(numbers) { }
-    
+    add(numbers) { 
+        return 0;
+    }
+
 }
 
 module.exports = StringCalculator;
