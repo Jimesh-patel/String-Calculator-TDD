@@ -11,5 +11,10 @@ describe('String Calculator', () => {
         const calc = new StringCalculator();
         expect(calc.add("2")).toBe(2); 
     });
+
+    test('should return the sum of two numbers separated by a comma', () => {
+        const calc = new StringCalculator();
+        expect(calc.add("1,2")).toBe(3);  
+    });      
       
 });
