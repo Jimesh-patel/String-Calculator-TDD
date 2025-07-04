@@ -2,7 +2,8 @@ class StringCalculator {
     constructor() { }  
 
     add(numbers) { 
-        return 0;
+        if(numbers == "")
+            return 0;
     }
 
 }
