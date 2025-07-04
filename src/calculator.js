@@ -2,8 +2,10 @@ class StringCalculator {
     constructor() { }  
 
     add(numbers) { 
-        if(numbers == "")
+        if (numbers === "") 
             return 0;
+        
+        return parseInt(numbers);
     }
 
 }
