@@ -1,23 +1,18 @@
+const parseDelimiter = require('./helper/delimiterParser');
+
 class StringCalculator {
-    constructor() { }  
+    constructor() { }
 
-    add(numbers) {
-        if (!numbers) return 0;
+    add(input) {
+        if (!input) return 0;
 
-        let delimiter = /[\n,]/;
-        if (numbers.startsWith('//')) {
-            const delimiterLine = numbers.split('\n')[0];
-            delimiter = new RegExp(numbers[2]);  
-            numbers = numbers.split('\n')[1];
-        }
+        const { delimiter, numbers } = parseDelimiter(input);
 
         return numbers
             .split(delimiter)
             .map(Number)
             .reduce((sum, n) => sum + n, 0);
-    }      
-      
+    }
 }
 
 module.exports = StringCalculator;
-  
