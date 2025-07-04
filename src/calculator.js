@@ -8,10 +8,9 @@ class StringCalculator {
             .split(',')
             .map(Number)
             .reduce((sum, n) => sum + n, 0);
-            
+
     }
       
-
 }
 
 module.exports = StringCalculator;
