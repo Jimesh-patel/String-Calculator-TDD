@@ -35,6 +35,12 @@ describe('String Calculator', () => {
     test('should throw error if input contains a negative number', () => {
         const calc = new StringCalculator();
         expect(() => calc.add("1,-2,3")).toThrow("negatives not allowed: -2");
-      });
+    });
+
+    test('should throw error listing all negative numbers', () => {
+        const calc = new StringCalculator();
+        expect(() => calc.add("1,-2,-5,3")).toThrow("negatives not allowed: -2, -5");
+    });
+      
       
 });
