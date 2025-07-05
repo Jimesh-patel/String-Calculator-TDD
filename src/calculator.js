@@ -17,7 +17,10 @@ class StringCalculator {
     }
 
     const { delimiter, numbers } = parseDelimiter(input);
-    const values = numbers.split(delimiter).map(Number);
+    const values = numbers
+      .split(delimiter)
+      .map(Number)
+      .filter(n => n <= 1000);
 
     validateNoNegatives(values);
 
