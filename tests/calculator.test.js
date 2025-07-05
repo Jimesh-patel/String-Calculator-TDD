@@ -81,9 +81,19 @@ describe('String Calculator', () => {
         });
     });
 
-    test('should support delimiter of any length like //[***]\\n1***2***3', () => {
-        const calc = new StringCalculator();
-        expect(calc.add("//[***]\n1***2***3")).toBe(6);
+    describe('Delimiters of any length', () => {
+
+        test('should support multi-character delimiter like //[***]\\n1***2***3', () => {
+            const calc = new StringCalculator();
+            expect(calc.add("//[***]\n1***2***3")).toBe(6);
+        });
+
+        test('should NOT allow incorrect usage of delimiter like [***] if actual separator is not consistent', () => {
+            const calc = new StringCalculator();
+            expect(calc.add("//[***]\n1**2****3")).not.toBe(6);
+        });
+
     });
+      
       
 });
