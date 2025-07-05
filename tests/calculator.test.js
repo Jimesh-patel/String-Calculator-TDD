@@ -31,6 +31,10 @@ describe('String Calculator', () => {
         const calc = new StringCalculator();
         expect(calc.add("//;\n1;2")).toBe(3); 
     });
-      
+
+    test('should throw error if input contains a negative number', () => {
+        const calc = new StringCalculator();
+        expect(() => calc.add("1,-2,3")).toThrow("negatives not allowed");
+      });
       
 });
