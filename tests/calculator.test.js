@@ -63,5 +63,10 @@ describe('String Calculator', () => {
         expect(mockHandler).toHaveBeenCalledTimes(1);
         expect(mockHandler).toHaveBeenCalledWith("1,2", 3);
     });      
+
+    test('should ignore numbers greater than 1000', () => {
+        const calc = new StringCalculator();
+        expect(calc.add("2,1001")).toBe(2);
+    });
       
 });
