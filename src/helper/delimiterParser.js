@@ -1,26 +1,31 @@
 function parseDelimiter(input) {
-    if (input.startsWith('//')) {
-        const [delimiterLine, numbers] = input.split('\n');
-
-        const delimiterMatches = delimiterLine.match(/\[(.+)\]/);
-
-        if (delimiterMatches) {
-            const rawDelimiter = delimiterMatches[1];
-            const escapedDelimiter = escapeRegExp(rawDelimiter); 
-            return {
-                delimiter: new RegExp(escapedDelimiter),
-                numbers,
-            };
-        }
-
-        const singleDelimiter = delimiterLine.slice(2);
+    if (!input.startsWith('//')) {
         return {
-            delimiter: new RegExp(escapeRegExp(singleDelimiter)),
+            delimiter: /[\n,]/, 
+            numbers: input,
+        };
+    }
+
+    const [delimiterLine, numbers] = input.split('\n');
+
+    const customDelimiter = extractBracketedDelimiter(delimiterLine);
+    if (customDelimiter) {
+        return {
+            delimiter: new RegExp(escapeRegExp(customDelimiter)),
             numbers,
         };
     }
 
-    return { delimiter: /[\n,]/, numbers: input };
+    const singleDelimiter = delimiterLine.slice(2);
+    return {
+        delimiter: new RegExp(escapeRegExp(singleDelimiter)),
+        numbers,
+    };
+}
+
+function extractBracketedDelimiter(line) {
+    const match = line.match(/\[(.+)\]/);
+    return match ? match[1] : null;
 }
 
 function escapeRegExp(str) {
