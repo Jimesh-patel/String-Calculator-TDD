@@ -81,7 +81,7 @@ describe('String Calculator', () => {
         });
     });
 
-    describe('Delimiters of any length', () => {
+    describe('Delimiters', () => {
 
         test('should support multi-character delimiter like //[***]\\n1***2***3', () => {
             const calc = new StringCalculator();
@@ -98,6 +98,11 @@ describe('String Calculator', () => {
             expect(calc.add("//[*][%]\n1*2%3")).toBe(6);
         });
 
+        test('should support multiple custom delimiters longer than one character', () => {
+            const calc = new StringCalculator();
+            expect(calc.add("//[**][%%]\n2**7%%3")).toBe(12);
+        });
+          
     });
 
 });

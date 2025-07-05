@@ -22,6 +22,8 @@ class StringCalculator {
       .map(Number)
       .filter(n => n <= 1000);
 
+    console.log("values : " + values)
+
 
     validateNoNegatives(values);
 
