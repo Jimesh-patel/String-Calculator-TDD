@@ -93,7 +93,11 @@ describe('String Calculator', () => {
             expect(calc.add("//[***]\n1**2****3")).not.toBe(6);
         });
 
+        test('should fail for input with multiple delimiters [*][%]', () => {
+            const calc = new StringCalculator();
+            expect(calc.add("//[*][%]\n1*2%3")).toBe(6);
+        });
+
     });
-      
-      
+
 });
