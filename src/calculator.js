@@ -1,4 +1,6 @@
-const parseDelimiter = require('./helper/delimiterParser');
+const { parseDelimiter } = require('./helper/delimiterParser');
+const { validateNoNegatives } = require('./helper/validator');
+
 
 class StringCalculator {
     constructor() { }
@@ -9,13 +11,10 @@ class StringCalculator {
         const { delimiter, numbers } = parseDelimiter(input);
         const values = numbers.split(delimiter).map(Number);
 
-        const negatives = values.filter(n => n < 0);
-        if (negatives.length > 0) {
-            throw new Error(`negatives not allowed: ${negatives.join(', ')}`);
-        }
+        validateNoNegatives(values); 
 
         return values.reduce((sum, n) => sum + n, 0);
-    }
+      }
 }
 
 module.exports = StringCalculator;

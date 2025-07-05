@@ -7,5 +7,5 @@ function parseDelimiter(input) {
     return { delimiter: /[\n,]/, numbers: input };
 }
 
-module.exports = parseDelimiter;
+module.exports = { parseDelimiter };
   

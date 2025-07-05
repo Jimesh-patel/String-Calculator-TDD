@@ -42,5 +42,4 @@ describe('String Calculator', () => {
         expect(() => calc.add("1,-2,-5,3")).toThrow("negatives not allowed: -2, -5");
     });
       
-      
 });
