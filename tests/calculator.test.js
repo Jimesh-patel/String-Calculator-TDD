@@ -51,5 +51,17 @@ describe('String Calculator', () => {
 
         expect(calc.getCalledCount()).toBe(3); 
     });      
+
+    test('should trigger AddOccured event after each add call', () => {
+        const calc = new StringCalculator();
+
+        const mockHandler = jest.fn();  
+        calc.AddOccured = mockHandler;  
+
+        const result = calc.add("1,2");
+
+        expect(mockHandler).toHaveBeenCalledTimes(1);
+        expect(mockHandler).toHaveBeenCalledWith("1,2", 3);
+    });      
       
 });
