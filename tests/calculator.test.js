@@ -41,5 +41,15 @@ describe('String Calculator', () => {
         const calc = new StringCalculator();
         expect(() => calc.add("1,-2,-5,3")).toThrow("negatives not allowed: -2, -5");
     });
+
+    test('should track how many times add() was called', () => {
+        const calc = new StringCalculator();
+
+        calc.add("1,2");
+        calc.add("3");
+        calc.add("");
+
+        expect(calc.getCalledCount()).toBe(3); 
+    });      
       
 });

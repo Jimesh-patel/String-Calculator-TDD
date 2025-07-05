@@ -3,18 +3,18 @@ const { validateNoNegatives } = require('./helper/validator');
 
 
 class StringCalculator {
-    constructor() { }
+  constructor() { }
 
-    add(input) {
-        if (!input) return 0;
+  add(input) {
+    if (!input) return 0;
 
-        const { delimiter, numbers } = parseDelimiter(input);
-        const values = numbers.split(delimiter).map(Number);
+    const { delimiter, numbers } = parseDelimiter(input);
+    const values = numbers.split(delimiter).map(Number);
 
-        validateNoNegatives(values); 
+    validateNoNegatives(values);
 
-        return values.reduce((sum, n) => sum + n, 0);
-      }
+    return values.reduce((sum, n) => sum + n, 0);
+  }
 }
 
 module.exports = StringCalculator;
