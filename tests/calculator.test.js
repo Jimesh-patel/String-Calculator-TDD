@@ -64,9 +64,21 @@ describe('String Calculator', () => {
         expect(mockHandler).toHaveBeenCalledWith("1,2", 3);
     });      
 
-    test('should ignore numbers greater than 1000', () => {
-        const calc = new StringCalculator();
-        expect(calc.add("2,1001")).toBe(2);
+    describe('Numbers greater than 1000', () => {
+        test('should ignore numbers greater than 1000', () => {
+            const calc = new StringCalculator();
+            expect(calc.add("2,1001")).toBe(2);
+        });
+
+        test('should include number 1000 in sum', () => {
+            const calc = new StringCalculator();
+            expect(calc.add("1000,1")).toBe(1001);
+        });
+
+        test('should return 0 if all numbers are over 1000', () => {
+            const calc = new StringCalculator();
+            expect(calc.add("1001,1002")).toBe(0);
+        });
     });
       
 });
