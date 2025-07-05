@@ -80,5 +80,10 @@ describe('String Calculator', () => {
             expect(calc.add("1001,1002")).toBe(0);
         });
     });
+
+    test('should support delimiter of any length like //[***]\\n1***2***3', () => {
+        const calc = new StringCalculator();
+        expect(calc.add("//[***]\n1***2***3")).toBe(6);
+    });
       
 });

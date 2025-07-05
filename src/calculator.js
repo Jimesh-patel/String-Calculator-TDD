@@ -22,6 +22,7 @@ class StringCalculator {
       .map(Number)
       .filter(n => n <= 1000);
 
+
     validateNoNegatives(values);
 
     const result = values.reduce((sum, n) => sum + n, 0);
