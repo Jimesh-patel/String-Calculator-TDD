@@ -106,3 +106,17 @@ describe('String Calculator', () => {
     });
 
 });
+
+
+describe("Multiplication operation", () => {
+
+    test("should support multiplication of ',' seperated numbers", () => {
+        const calc = new StringCalculator();
+        expect(calc.mul("1,2")).toBe(2);
+    });
+
+});
+
+
+
+
