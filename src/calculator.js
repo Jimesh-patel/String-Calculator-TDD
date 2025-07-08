@@ -34,6 +34,32 @@ class StringCalculator {
     return result;
   }
 
+  mul(input) {
+    this.callCount++;
+
+    if (!input) {
+      if (this.AddOccured) this.AddOccured(input, 0);
+      return 0;
+    }
+
+    const { delimiter, numbers } = parseDelimiter(input);
+    const values = numbers
+      .split(delimiter)
+      .map(Number)
+      .filter(n => n <= 1000);
+
+
+    validateNoNegatives(values);
+
+    const result = values.reduce((sum, n) => sum * n, 1);
+
+    if (this.AddOccured) {
+      this.AddOccured(input, result);
+    }
+
+    return result;
+  }
+
   getCalledCount() {
     return this.callCount;
   }
